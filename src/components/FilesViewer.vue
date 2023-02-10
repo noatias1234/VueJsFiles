@@ -10,7 +10,7 @@ export default {
   components: { IconFile, IconFolder, IconFolderOpen },
   setup(_, { emit }) {
     const onFileClick = file => {
-      if (file.directory) emit('folderclick', file)
+      if (file.directory) emit('folderClick', file)
     }
     return { onFileClick }
   }
