@@ -1,13 +1,20 @@
 <script>
+import UploadFilesService from '@/Services/UploadFilesService.vue';
 export default {
+  components:{
+    UploadFilesService,
+  },
   data() {
     return {
-      selectedFiles: [],
+      formValues:{
+        selectedFiles: [],
+      },
+      progress: 0
     };
   },
   methods: {
     selectFiles() {
-      this.selectedFiles = this.$refs.fileInput.files;
+      this.formValues.selectedFiles = this.$refs.fileInput.files;
     },
 
     formatSize(size) {
@@ -18,21 +25,29 @@ export default {
         ["B", "kB", "MB", "GB", "TB"][i]
       );
     },
+  submitForm(event){
+    event.preventDefault();
+    console.log('Form values:', this.formValues);
+    console.log('Selected files', this.formValues.selectedFiles)
+ },
+  postFiles(){
+    this.progress=this.$refs.uploadFilesService.uploadFile(this.formValues.selectedFiles);
+  },
+  
   }
 };
 </script>
 
 <template>
+  <UploadFilesService ref="uploadFilesService"></UploadFilesService>
+  <form @submit="submitForm">
   <div class="container mt-2">
     <div class="mb-3">
       <div class="input-group mb-3">
-        <input type="file" class="form-control shadow-none" id="fileInput" ref="fileInput" @change="selectFiles"
-          multiple />
-        <button :disabled="selectedFiles.length === 0" class="btn btn-success shadow-none" type="button"
-          id="button-addon2">Upload
-        </button>
+        <input type="file" @change="postFiles" class="form-control shadow-none" id="fileInput" ref="fileInput" multiple/>
+          <button id="button" @click="postFiles">Upload</button>
       </div>
-      <div v-if="selectedFiles.length > 0">
+      <div v-if="formValues.selectedFiles.length > 0">
         <table class="table">
           <thead class="table-light">
             <tr>
@@ -41,18 +56,30 @@ export default {
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(file, index) in selectedFiles" :key="index">
+            <tr v-for="(file, index) in formValues.selectedFiles" :key="index">
               <td>{{ file.name }}</td>
               <td>{{ formatSize(file.size) }}</td>
             </tr>
           </tbody>
         </table>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-            aria-valuemax="100">25%</div>
-        </div>
         <br>
       </div>
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" :style="{width: progress + '%'}" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" >{{ progress }}%</div>
+        </div>
     </div>
   </div>
+  </form>
 </template>
+
+
+<style>
+.progress {
+  height: 20px;
+  margin-top: 20px;
+}
+
+.progress-bar {
+  background-color: #4caf50;
+}
+</style>
