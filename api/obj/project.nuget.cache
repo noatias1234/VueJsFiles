@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "//XCkz26ybn4/Doglp/DapcOOb96y9o74c2N7G8VuWdz3TydkuduyqhdzRdlWv8nnohe/X5CP4mxdeys/t2WUQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\barnoaa\\source\\repos\\vue-electron-demo\\api\\api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\barnoaa\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\barnoaa\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\barnoaa\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\barnoaa\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\barnoaa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\barnoaa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
